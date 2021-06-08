@@ -12,7 +12,7 @@ class test_battery_current_ranges(unittest.TestCase):
   def test_wrong_alertType(self):
     try:
         Battery_Parameter_Handler.process_information(["Charge_rate" ,"Temperature", "Soc"],"IPHONE")
-     except KeyError:
+    except KeyError:
         print("Alert Type is Wrong")
     
   def test_wrong_batteryParam(self):
@@ -24,7 +24,7 @@ class test_battery_current_ranges(unittest.TestCase):
   def test_empty_batteryParam(self):
     try:
         Battery_Parameter_Handler.process_information([],"Email")
-     except ValueError:
+    except ValueError:
         print("Battery parameter is missing")
     
 if __name__ == '__main__':
