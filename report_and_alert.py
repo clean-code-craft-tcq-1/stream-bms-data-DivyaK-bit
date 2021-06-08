@@ -16,8 +16,10 @@ def send_to_controller(breachType):
   return True   
 
 def send_to_email(breachType):
-   print("Hello")
-   return True
+  recepient = "a.b@c.com"
+  print(f'To: {recepient}')
+  print("Hi")
+  return True
 
 alert_Target_type = {
         'EMAIL': send_to_email,
