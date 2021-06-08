@@ -24,13 +24,13 @@ def check_paramters(battery_parameters):
         raise ValueError('Battery parameter is missing')
     for item in battery_parameters:
         if not item.upper() in battery_limits.keys():
-            raise KeyError('Battery paramenter is wrong')
+            return 'Battery paramenter is wrong'
 
 def check_alert(alert_type):    
     if len(alert_type) == 0:
-        raise ValueError('Alert type is missing')
+        return 'Alert type is missing'
     elif not alert_type.upper() in report_and_alert.alert_Target_type.keys():
-        raise KeyError("Alert Type is Wrong")          
+        return 'Alert Type is Wrong'          
             
 def generate_limits(battery_parameter):
     min, max = battery_limits[battery_parameter]
