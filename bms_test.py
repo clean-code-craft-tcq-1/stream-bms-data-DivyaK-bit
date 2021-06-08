@@ -1,34 +1,25 @@
 import unittest
-import bms_handler
+import Battery_Parameter_Handler
 
 class test_battery_current_ranges(unittest.TestCase):
     
   def test_battery_range(self):    
-    self.assertTrue(bms_handler.process_vitals(["Charge_rate" ,"Temperature"],"Console"))    
+    self.assertTrue(Battery_Parameter_Handler.process_information(["Charge_rate" ,"Temperature"],"Console"))    
     
   def test_alertType(self):
-      self.assertTrue(bms_handler.process_vitals(["Charge_rate" ,"Temperature", "Soc"],"Console"))
+    self.assertTrue(Battery_Parameter_Handler.process_information(["Charge_rate" ,"Temperature", "Soc"],"Console"))
     
   def test_wrong_alertType(self):
-      with self.assertRaises(KeyError) as context:
-            bms_handler.process_vitals(["Charge_rate" ,"Temperature", "Soc"],"PDF")
-      self.assertTrue('Supplied AlertType is wrong' in str(context.exception))
+    self.assertTrue((Battery_Parameter_Handler.process_information(["Charge_rate" ,"Temperature", "Soc"],"IPHONE")) == 'Alert Type is Wrong')
       
   def test_wrong_batteryParam(self):
-      with self.assertRaises(KeyError) as context:
-            bms_handler.process_vitals(["Voltage" ,"Temperature", "Soc"],"Email")
-      self.assertTrue('Supplied battery paramenter is wrong' in str(context.exception))         
+    self.assertTrue((Battery_Parameter_Handler.process_information(["Volumne" ,"Temperature", "Soc"],"Email")) == 'Battery paramenter is wrong')         
       
   def test_empty_alertType(self):
-      with self.assertRaises(ValueError) as context:
-            bms_handler.process_vitals(["Charge_rate" ,"Temperature", "Soc"],"")
-      self.assertTrue('Alerttype value is missing' in str(context.exception))
+    self.assertTrue((Battery_Parameter_Handler.process_information(["Charge_rate" ,"Temperature", "Soc"],"") == 'Alert Type is missing')
       
   def test_empty_batteryParam(self):
-      with self.assertRaises(ValueError) as context:
-            bms_handler.process_vitals([],"Email")
-      self.assertTrue('Battery parameter value is missing' in str(context.exception))               
-
-
+                    self.assertTrue((Battery_Parameter_Handler.process_information([],"Email")) == 'Battery paramenter is missing')         
+    
 if __name__ == '__main__':
   unittest.main()
