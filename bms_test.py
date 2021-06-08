@@ -19,7 +19,7 @@ class test_battery_current_ranges(unittest.TestCase):
     self.assertFalse(Battery_Parameter_Handler.process_information(["Charge_rate" ,"Temperature", "Soc"],""))
     
   def test_empty_batteryParam(self):
-    self.assertFalse(Battery_Parameter_Handler.process_information([],"Email"))   
+    self.assertFalse(Battery_Parameter_Handler.process_information(,"Email"))   
     
 if __name__ == '__main__':
   unittest.main()
