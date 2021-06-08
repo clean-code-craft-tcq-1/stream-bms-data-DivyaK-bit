@@ -23,7 +23,7 @@ def check_parameters(battery_parameters):
   for item in battery_parameters:
     if not item.upper() in battery_limits.keys():
       return 'Battery paramenter is wrong'
-      
+ 
 def check_if_paramter_empty(battery_parameters):
   if len(battery_parameters) == 0:
     return 'Battery parameter is missing' 
