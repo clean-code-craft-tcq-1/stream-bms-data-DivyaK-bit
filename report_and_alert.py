@@ -7,7 +7,7 @@ def send_to_console(parameter_values,battery_parameter):
   print(battery_parameter)
   for item in parameter_values:
       print(str(item))
-      time.sleep(0.3)
+      time.sleep(0.1)
   return True
   
 def send_to_controller(breachType):
@@ -18,11 +18,7 @@ def send_to_controller(breachType):
 def send_to_email(breachType):
   recepient = "a.b@c.com"
   print(f'To: {recepient}')
-  print("Hi")
+  print('Hi')
   return True
 
-alert_Target_type = {
-        'EMAIL': send_to_email,
-        'CONTROLLER' : send_to_controller,
-        'CONSOLE' : send_to_console
-        }
+alert_Target_type = {'EMAIL': send_to_email, CONTROLLER' : send_to_controller, 'CONSOLE' : send_to_console}
