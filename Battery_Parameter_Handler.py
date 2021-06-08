@@ -19,12 +19,12 @@ def process_information(battery_parameters, alert_type):
   return True
 
 def check_paramters(battery_parameters):
-  if len(battery_parameters)== 0: 
-    return 'Battery parameter is missing'
-  elif len(battery_parameters) !=0:
+  if len(battery_parameters) <> 0:
     for item in battery_parameters:
       if not item.upper() in battery_limits.keys():
         return 'Battery paramenter is wrong'
+  elif len(battery_parameters)== 0:
+      return 'Battery parameter is missing'
 
 def check_alert(alert_type): 
   if len(alert_type) == 0:
