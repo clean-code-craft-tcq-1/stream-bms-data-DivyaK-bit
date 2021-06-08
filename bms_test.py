@@ -13,7 +13,7 @@ class test_battery_current_ranges(unittest.TestCase):
     self.assertEqual((Battery_Parameter_Handler.process_information(["Charge_rate" ,"Temperature", "Soc"],"IPHONE")) , 'Alert Type is Wrong')
     
   def test_wrong_batteryParam(self):
-    self.assertEqual((Battery_Parameter_Handler.process_information(["Volumne" ,"Temperature", "Soc"],"Email")) ,'Battery paramenter is wrong')         
+    self.assertTrue((Battery_Parameter_Handler.process_information(["Volumne" ,"help", "Soc"],"Email")) ,'Battery paramenter is wrong')         
     
   def test_empty_alertType(self):
     self.assertEqual((Battery_Parameter_Handler.process_information(["Charge_rate" ,"Temperature", "Soc"],"")), 'Alert Type is missing')
