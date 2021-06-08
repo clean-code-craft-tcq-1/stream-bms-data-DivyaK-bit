@@ -1,6 +1,6 @@
 import time
 
-def check_and_alert(parameter_values, battery_parameter,alert_type):
+def check_parameter(parameter_values, battery_parameter,alert_type):
   return (alertTarget_type[alert_type](parameter_values,battery_parameter))   
    
 def send_to_console(parameter_values,battery_parameter):
@@ -16,7 +16,7 @@ def send_to_controller(breachType):
   return True   
 
 def send_to_email(breachType):
-   print("Hello}")
+   print("Hello")
    return True
 
 alertTarget_type = {
