@@ -21,4 +21,4 @@ def send_to_email(breachType):
   print('Hi, ', breachType)
   return True
 
-alert_Target_type = {'EMAIL': send_to_email, CONTROLLER' : send_to_controller, 'CONSOLE' : send_to_console}
+alert_Target_type = {'EMAIL': send_to_email, 'CONTROLLER' : send_to_controller, 'CONSOLE' : send_to_console}
