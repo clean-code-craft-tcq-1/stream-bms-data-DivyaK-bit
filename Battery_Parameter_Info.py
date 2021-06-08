@@ -2,9 +2,7 @@ import random
 import numpy
 import report_vitals
 
-bms_limits = {'TEMPERATURE': [0, 45],
-              'SOC': [20, 80],
-              'CHARGE_RATE': [0, 0.8]} 
+battery_limits = {'TEMPERATURE': [0, 45], 'SOC': [20, 80], 'CHARGE_RATE': [0, 0.8]} 
 
 def random_number_generator(min,max):
   #Generates random numbers between min and max
