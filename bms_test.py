@@ -19,7 +19,7 @@ class test_battery_current_ranges(unittest.TestCase):
     self.assertEqual((Battery_Parameter_Handler.process_information(["Charge_rate" ,"Temperature", "Soc"],"")), 'Alert Type is missing')
     
   def test_empty_batteryParam(self):
-    self.assertEqual((Battery_Parameter_Handler.process_information([],"Email")) , 'Battery paramenter is missing')   
+    self.assertTrue((Battery_Parameter_Handler.process_information([],"Email")) , 'Battery paramenter is missing')   
     
 if __name__ == '__main__':
   unittest.main()
