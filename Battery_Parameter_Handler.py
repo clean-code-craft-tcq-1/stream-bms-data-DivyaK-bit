@@ -20,16 +20,20 @@ def process_information(battery_parameters, alert_type):
 
 def check_parameters(battery_parameters):
   if len(battery_parameters) == 0:
-    return 'Battery parameter is missing'
+    print( 'Battery parameter is missing')
+    return False
   for item in battery_parameters:
     if not item.upper() in battery_limits.keys():
-      return 'Battery paramenter is wrong'
+      print( 'Battery paramenter is wrong')
+      return False
     
 def check_alert(alert_type): 
   if len(alert_type) == 0:
-    return 'Alert Type is missing'
+    print( 'Alert Type is missing')
+    return False
   elif not alert_type.upper() in report_and_alert.alert_Target_type.keys():
-    return 'Alert Type is Wrong'          
+    print( 'Alert Type is Wrong'  )
+    return False
             
 def generate_limits(battery_parameter):
   min, max = battery_limits[battery_parameter]
