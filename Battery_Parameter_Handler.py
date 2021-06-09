@@ -8,7 +8,10 @@ def generating_random_number(min, max):
   if isinstance((min+max) , int):
     return random.randint(min, max)
   elif isinstance((min+max) , float):
-    return (min + (max-min)*random.random()) 
+    rand_num=[]
+    for i in range(min, max):
+        rand_num.append(min + (max-min)*random.random())
+    return rand_num 
 
 def process_information(battery_parameters, alert_type):
   check_parameters(battery_parameters)
