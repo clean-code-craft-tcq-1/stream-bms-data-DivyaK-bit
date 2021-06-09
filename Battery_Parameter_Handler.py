@@ -9,7 +9,7 @@ def generating_random_number(min, max):
     return random.randint(min, max)
   elif isinstance((min+max) , float):
     rand_num=[]
-    for i in range(min, max):
+    for i in range(5):
         rand_num.append(min + (max-min)*random.random())
     return rand_num 
 
