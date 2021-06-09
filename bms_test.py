@@ -12,7 +12,7 @@ class test_battery_current_ranges(unittest.TestCase):
   def test_wrong_alertType(self):
     with self.assertRaises(KeyError) as context:
         Battery_Parameter_Handler.process_information(["Charge_rate" ,"Temperature", "Soc"],"PDF")
-    self.assertTrue('Alert Type is wrong' in str(context.exception))
+    self.assertTrue('Alert Type is Wrong' in str(context.exception))
       
   def test_wrong_batteryParam(self):
     with self.assertRaises(KeyError) as context:
