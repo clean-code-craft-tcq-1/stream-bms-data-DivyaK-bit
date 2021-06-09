@@ -9,29 +9,25 @@ class test_battery_current_ranges(unittest.TestCase):
   def test_alertType(self):
     self.assertTrue(Battery_Parameter_Handler.process_information(["Charge_rate" ,"Temperature", "Soc"],"Console"))
     
-  def test_wrong_alertType(self):
-    try:
-        Battery_Parameter_Handler.process_information(["Charge_rate" ,"Temperature", "Soc"],"IPHONE")
-    except KeyError:
-        print("Alert Type is Wrong")
-    
+   def test_wrong_alertType(self):
+      with self.assertRaises(KeyError) as context:
+            bms_data_handler.process_vitals(["Charge_rate" ,"Temperature", "Soc"],"PDF")
+      self.assertTrue('Supplied AlertType is wrong' in str(context.exception))
+      
   def test_wrong_batteryParam(self):
-    try:
-        Battery_Parameter_Handler.process_information(["Volumne" ,"help", "Soc"],"Email")
-    except KeyError:
-        print("Battery parameter is wrong")
-    
+      with self.assertRaises(KeyError) as context:
+            Battery_Parameter_Handler.process_information(["Voltage" ,"Temperature", "Soc"],"Email")
+      self.assertTrue('Supplied battery paramenter is wrong' in str(context.exception))         
+      
   def test_empty_alertType(self):
-    try:
-        Battery_Parameter_Handler.process_information(["Charge_rate" ,"Temperature", "Soc"],"")
-    except ValueError:
-        print("Alert Type is missing")
-    
+      with self.assertRaises(ValueError) as context:
+            Battery_Parameter_Handler.process_information(["Charge_rate" ,"Temperature", "Soc"],"")
+      self.assertTrue('Alerttype value is missing' in str(context.exception))
+      
   def test_empty_batteryParam(self):
-    try:
-        Battery_Parameter_Handler.process_information([],"Email")
-    except ValueError:
-        print("Battery parameter is missing")
+      with self.assertRaises(ValueError) as context:
+            Battery_Parameter_Handler.process_information([],"Email")
+      self.assertTrue('Battery parameter value is missing' in str(context.exception))
     
 if __name__ == '__main__':
   unittest.main()
