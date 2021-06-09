@@ -7,12 +7,11 @@ def generating_random_number(min, max):
   rand_num = []
   #Generates random numbers between min and max
   if isinstance((min+max) , int):
-    for i in range(10):
-      rand_num.append(random.randint(min, max))
-      return rand_num
+    rand_num = random.sample(range(min, max), 10)
+    return rand_num
   elif isinstance((min+max) , float):
     for i in range(10):
-        rand_num.append(min + (max-min)*random.random())
+        rand_num.append(random.uniform(min, max))
     return rand_num 
 
 def process_information(battery_parameters, alert_type):
