@@ -4,12 +4,14 @@ import report_and_alert
 battery_limits = {'TEMPERATURE': [0, 45], 'SOC': [20, 80], 'CHARGE_RATE': [0, 0.8]} 
 
 def generating_random_number(min, max):
+  rand_num = []
   #Generates random numbers between min and max
   if isinstance((min+max) , int):
-    return random.randint(min, max)
+    for i in range(10):
+      rand_num.append(random.randint(min, max))
+      return rand_num
   elif isinstance((min+max) , float):
-    rand_num=[]
-    for i in range(5):
+    for i in range(10):
         rand_num.append(min + (max-min)*random.random())
     return rand_num 
 
