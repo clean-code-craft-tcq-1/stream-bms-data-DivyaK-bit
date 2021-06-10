@@ -6,7 +6,7 @@ def check_and_alert(parameter_values, battery_parameter,alert_type):
 def send_to_console(parameter_values,battery_parameter):
   print(battery_parameter)
   for item in parameter_values:
-      print(str(item))
+      print(battery_parameter + str(item))
       time.sleep(0.1)
   return True
   
