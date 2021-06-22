@@ -4,7 +4,7 @@ import Battery_Parameter_Handler
 class test_battery_current_ranges(unittest.TestCase):
     
   def test_battery_range(self):    
-    self.assertTrue(Battery_Parameter_Handler.process_information(["Charge_rate" ,"Temperature"],"Console"))    
+    self.assertTrue(Battery_Parameter_Handler.process_information(["Charge_rate" ,"Temperature"],"Console"))
     
   #def test_alertType(self):
    # self.assertTrue(Battery_Parameter_Handler.process_information(["Charge_rate" ,"Temperature", "Soc"],"Console"))

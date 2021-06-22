@@ -1,26 +1,37 @@
 import random
+import json
 import report_and_alert
 
 battery_limits = {'TEMPERATURE': [0, 45], 'SOC': [20, 80], 'CHARGE_RATE': [0, 0.8]} 
 
-def generating_random_number(min, max):
-  rand_num = []
-  #Generates random numbers between min and max
-  if isinstance((min+max) , int):
-    rand_num = random.sample(range(min, max), 10)
-    return rand_num
-  elif isinstance((min+max) , float):
-    for i in range(10):
-        rand_num.append(random.uniform(min, max))
-    return rand_num 
+
+def generating_random_number(min,max):
+    #generate a random int
+    if isinstance((min+max) , int):
+        return random.randint(min, max)
+    #generate a random float
+    elif isinstance((min+max) , float):
+        return min + (max-min)*random.random()
+
 
 def process_information(battery_parameters, alert_type):
-  check_parameters(battery_parameters)
-  check_alert(alert_type)    
-  for battery_parameter in battery_parameters:
-    parameter_values = generate_limits(battery_parameter.upper())
-    publish_data(parameter_values, battery_parameter, alert_type.upper())
-  return True
+    check_parameters(battery_parameters)
+    check_alert(alert_type)  
+    parameter_data = {} 
+    for battery_parameter in battery_parameters:
+        parameter_data[battery_parameter] = generate_limits(battery_parameter.upper())
+    
+    json_data = json.dumps(parameter_data)
+    publish_data(json_data, alert_type.upper())
+    return True
+
+  
+def startSender(battery_parameters, alert_type, alert_duration):
+    publish_data("START",alert_type.upper())
+    while(alert_duration):
+        process_information(battery_parameters, alert_type)
+        alert_duration = alert_duration - 1;
+    publish_data("STOP",alert_type.upper())
 
 def check_parameters(battery_parameters):
   if len(battery_parameters) == 0:
@@ -39,5 +50,5 @@ def generate_limits(battery_parameter):
   min, max = battery_limits[battery_parameter]
   return generating_random_number(min, max)
  
-def publish_data(parameter_values,battery_parameter,alert_type):
-  return report_and_alert.check_and_alert(parameter_values, battery_parameter,alert_type)
+def publish_data(parameter_data, alert_type):
+  return report_and_alert.check_and_alert(parameter_data ,alert_type)
