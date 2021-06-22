@@ -72,3 +72,46 @@ This section lists the minimum functionality of the Sender and Receiver.
 ## Quality Parameters
 
 Setup the quality parameters of your project (duplication, complexity, coverage, warnings) using the GitHub workflow yml files.
+
+
+### Implementation
+## Sender Interface
+Provides Continous Stream of Data to Console With Start and Stop Keys.
+This helps to ensure that the Receiver is run only while the data is being Streamed to Console
+
+Start Key : START
+Output Format : JSON String  : { "ParamterName_1" : Data_1 , "ParamterName_2" : Data_2 , ... }
+Stop Key  : STOP
+
+Screenshot :
+
+![Screenshot](Sender_ForReceiver.png)
+
+## Receiver Interface
+Reads Continous Stream of Data from Console based on Start and Stop Keys.
+Can Handle Any number of paramters and accepts the parameter data in JSON format
+
+Start Key : START
+Input Format : JSON String  : { "ParamterName_1" : Data_1 , "ParamterName_2" : Data_2 , ... }
+
+Also Provides Handling to print the stats for each parameter
+Provided Stats:
+- Current Value
+- Minumum Value attained throughout life cycle
+- Maximum Value attained throughout life cycle
+- Running Average for a defined Window
+
+Sceenshot :
+
+![Screenshot](Receiver.png)
+
+## Sender - Receiver Interface
+Both Sender and Receiver have been designed to seamlessly integrate and interact with Each Other
+Both Work on Common JSON Format and Accept Any number of Parameters with One Value for each Parameter
+
+
+
+
+
+
+
